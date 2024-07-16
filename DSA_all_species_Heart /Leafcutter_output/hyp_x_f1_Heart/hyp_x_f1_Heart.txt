@@ -1,0 +1,8 @@
+SRR9617538_Aligned.sortedByCoord.out.bam Ficedula_hypoleuca 
+SRR9617539_Aligned.sortedByCoord.out.bam Ficedula_hypoleuca 
+SRR9617552_Aligned.sortedByCoord.out.bam F1_hybrid  
+SRR9617557_Aligned.sortedByCoord.out.bam F1_hybrid  
+SRR9617564_Aligned.sortedByCoord.out.bam Ficedula_hypoleuca 
+SRR9617571_Aligned.sortedByCoord.out.bam Ficedula_hypoleuca 
+SRR9617574_Aligned.sortedByCoord.out.bam Ficedula_hypoleuca 
+SRR9617579_Aligned.sortedByCoord.out.bam F1_hybrid  

@@ -1,0 +1,73 @@
+#!/bin/bash
+
+# Define the path to the folder containing the samples
+folder_path="/beegfs/data/fslimi/RNAseq/fic_alb/"
+
+# Define the genome index directory
+genome="/beegfs/data/fslimi/genome_index/"
+
+# Define the output directory
+output_dir="/beegfs/data/fslimi/fic_alb_bam/"
+
+# Get the list of sample names from the folder path
+samples=($(ls "${folder_path}"))
+
+# Define the path to the folder containing the scripts
+pathScripts="/beegfs/home/fslimi/scripts/Sc_mapping_reads"
+
+# Loop over each sample and create a script for it
+for sample_name in "${samples[@]}"; do
+    # Create a unique job name for each sample
+    job_name="${sample_name}_Alignment"
+
+    # Define the data directory for the current sample
+    data_dir="${folder_path}${sample_name}/"
+
+    # Define the unique output and error filenames with the Job ID included
+    output_file="${pathScripts}${sample_name}_%j_Alig.out"
+    error_file="${pathScripts}${sample_name}_%j_Alig.err"
+
+    # Define the full path for the submission script
+    script="${pathScripts}/slurm_Alignment_script_${sample_name}.sh"
+
+    # Create the Slurm submission script
+    cat > "$script" <<EOL
+#!/bin/bash
+#SBATCH --job-name=${job_name}
+#SBATCH --nodes=1
+#SBATCH --time=1-00:00:00
+#SBATCH --partition=normal
+#SBATCH --ntasks=1
+#SBATCH --mem=40GB
+#SBATCH --output=${output_file}
+#SBATCH --error=${error_file}
+
+# Run STAR alignment with gunzip command for decompression
+STAR --outFileNamePrefix "${output_dir}${sample_name}_" \
+     --quantMode GeneCounts \
+     --readFilesCommand "gunzip -c" \
+     --outSAMtype BAM SortedByCoordinate \
+     --runThreadN 1 \
+     --genomeDir "${genome}" \
+     --readFilesIn "${data_dir}${sample_name}_1.fastq.gz" "${data_dir}${sample_name}_2.fastq.gz" \
+     --outFilterMultimapNmax 1 \
+     --outFilterMismatchNmax 3 \
+     --twopassMode Basic \
+     --outSAMstrandField intronMotif
+EOL
+
+    # Submit the Slurm script and capture the JobID
+    job_id=$(sbatch "$script" | awk '{print $NF}')
+
+    # Display debugging information
+    echo "Script created and submitted for ${sample_name}."
+    echo "Script path: $script"
+    echo "Data directory: ${data_dir}"
+    echo "Output file: ${output_file}"
+    echo "Error file: ${error_file}"
+    echo "JobID: $job_id"
+    echo ""
+done
+
+
+

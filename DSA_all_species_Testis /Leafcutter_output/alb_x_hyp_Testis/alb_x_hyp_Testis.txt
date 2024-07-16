@@ -1,0 +1,10 @@
+SRR9617526_Aligned.sortedByCoord.out.bam Ficedula_albicollis 
+SRR9617532_Aligned.sortedByCoord.out.bam Ficedula_hypoleuca  
+SRR9617534_Aligned.sortedByCoord.out.bam Ficedula_hypoleuca  
+SRR9617542_Aligned.sortedByCoord.out.bam Ficedula_albicollis  
+SRR9617545_Aligned.sortedByCoord.out.bam Ficedula_albicollis  
+SRR9617569_Aligned.sortedByCoord.out.bam Ficedula_hypoleuca  
+SRR9617572_Aligned.sortedByCoord.out.bam Ficedula_hypoleuca 
+SRR9617576_Aligned.sortedByCoord.out.bam Ficedula_albicollis  
+SRR9617577_Aligned.sortedByCoord.out.bam Ficedula_hypoleuca  
+SRR9617581_Aligned.sortedByCoord.out.bam Ficedula_albicollis  

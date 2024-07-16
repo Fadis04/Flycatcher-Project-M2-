@@ -1,0 +1,58 @@
+#!/bin/bash
+# Define output directory for STAR alignment
+alig_out="/beegfs/data/fslimi/star_output/"
+
+# Define directory containing the indexed reference genome
+ref_genome="/beegfs/home/fslimi/scripts/genome_indexing"
+
+# List of sample names and their corresponding forward and reverse read files
+samples=(
+    "SRR9617524 SRR9617524_1.fastq.gz SRR9617524_2.fastq.gz"
+    "SRR9617525 SRR9617525_1.fastq.gz SRR9617525_2.fastq.gz"
+    "SRR9617526 SRR9617526_1.fastq.gz SRR9617526_2.fastq.gz"
+    "SRR9617527 SRR9617527_1.fastq.gz SRR9617527_2.fastq.gz"
+    "SRR9617528 SRR9617528_1.fastq.gz SRR9617528_2.fastq.gz"
+    "SRR9617529 SRR9617529_1.fastq.gz SRR9617529_2.fastq.gz"
+    "SRR9617530 SRR9617530_1.fastq.gz SRR9617530_2.fastq.gz"
+    "SRR9617531 SRR9617531_1.fastq.gz SRR9617531_2.fastq.gz"
+    "SRR9617541 SRR9617541_1.fastq.gz SRR9617541_2.fastq.gz"
+    "SRR9617542 SRR9617542_1.fastq.gz SRR9617542_2.fastq.gz"
+    "SRR9617543 SRR9617543_1.fastq.gz SRR9617543_2.fastq.gz"
+    "SRR9617544 SRR9617544_1.fastq.gz SRR9617544_2.fastq.gz"
+    "SRR9617545 SRR9617545_1.fastq.gz SRR9617545_2.fastq.gz"
+    "SRR9617546 SRR9617546_1.fastq.gz SRR9617546_2.fastq.gz"
+    "SRR9617547 SRR9617547_1.fastq.gz SRR9617547_2.fastq.gz"
+    "SRR9617548 SRR9617548_1.fastq.gz SRR9617548_2.fastq.gz"
+    "SRR9617549 SRR9617549_1.fastq.gz SRR9617549_2.fastq.gz"
+    "SRR9617550 SRR9617550_1.fastq.gz SRR9617550_2.fastq.gz"
+    "SRR9617563 SRR9617563_1.fastq.gz SRR9617563_2.fastq.gz"
+    "SRR9617576 SRR9617576_1.fastq.gz SRR9617576_2.fastq.gz"
+    "SRR9617581 SRR9617581_1.fastq.gz SRR9617581_2.fastq.gz"
+    "SRR9617582 SRR9617582_1.fastq.gz SRR9617582_2.fastq.gz"
+    "SRR9617583 SRR9617583_1.fastq.gz SRR9617583_2.fastq.gz"
+    "SRR9617584 SRR9617584_1.fastq.gz SRR9617584_2.fastq.gz"
+    "SRR9617585 SRR9617585_1.fastq.gz SRR9617585_2.fastq.gz"
+)
+
+# Run STAR alignment for each sample
+for sample_info in "${samples[@]}"; do
+    # Extract sample name and its forward and reverse read files
+    read -r -a sample_array <<< "$sample_info"
+    sample_name="${sample_array[0]}"
+    forward_read="${sample_array[1]}"
+    reverse_read="${sample_array[2]}"
+    
+    # Run STAR alignment
+    STAR --outFileNamePrefix "${alig_out}/${sample_name}_" \
+         --quantMode GeneCounts \
+         --readFilesCommand cat \
+         --outSAMtype BAM SortedByCoordinate \
+         --runThreadN 14 \
+         --genomeDir "${ref_genome}" \
+         --readFilesIn "/beegfs/data/fslimi/RNAseq/fic_alb/${sample_name}/${forward_read}" "/beegfs/data/fslimi/RNAseq/fic_alb/${sample_name}/${reverse_read}" \
+         --outFilterMultimapNmax 1 \
+         --outFilterMismatchNmax 3 \
+         --twopassMode Basic \
+         --outSAMstrandField intronMotif
+done
+

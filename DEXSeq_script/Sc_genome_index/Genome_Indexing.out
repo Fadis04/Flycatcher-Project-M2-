@@ -1,0 +1,16 @@
+	STAR --runMode genomeGenerate --sjdbOverhang 100 --genomeFastaFiles /beegfs/data/fslimi/assembly/fAlb15_MTmask_mtfZan.fasta --genomeDir /beegfs/data/fslimi/genome_index/ --sjdbGTFfile /beegfs/data/fslimi/annotation/Ficedula_albicollis.fAlb15.e104.gtf
+	STAR version: 2.7.11b   compiled: 2024-01-25T16:12:02-05:00 :/home/dobin/data/STAR/STARcode/STAR.master/source
+Apr 23 10:44:32 ..... started STAR run
+Apr 23 10:44:33 ... starting to generate Genome files
+Apr 23 10:44:57 ..... processing annotations GTF
+Apr 23 10:45:23 ... starting to sort Suffix Array. This may take a long time...
+Apr 23 10:45:47 ... sorting Suffix Array chunks and saving them to disk...
+Apr 23 11:22:15 ... loading chunks from disk, packing SA...
+Apr 23 11:23:05 ... finished generating suffix array
+Apr 23 11:23:05 ... generating Suffix Array index
+Apr 23 11:25:25 ... completed Suffix Array index
+Apr 23 11:25:25 ..... inserting junctions into the genome indices
+Apr 23 11:31:22 ... writing Genome to disk ...
+Apr 23 11:31:31 ... writing Suffix Array to disk ...
+Apr 23 11:31:43 ... writing SAindex to disk
+Apr 23 11:31:46 ..... finished successfully

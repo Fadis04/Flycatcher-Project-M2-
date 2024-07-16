@@ -1,0 +1,189 @@
+--------------------------------------------------------------------------------------------------------------
+--------------------------------------------ALB X HYP-----------------------------------------------------------  
+--------------------------------------------------------------------------------------------------------------
+# Load necessary libraries
+library(dplyr)
+
+# Define file paths
+significant_exons_path <- "/home/sfadi/Bureau/DSA_all_species_Testis/DEXSeq_output/alb_x_hyp_Testis/significant_exons.txt"
+non_significant_exons_path <- "/home/sfadi/Bureau/DSA_all_species_Testis/DEXSeq_output/alb_x_hyp_Testis/non_significant_exons.txt"
+na_exons_path <- "/home/sfadi/Bureau/DSA_all_species_Testis/DEXSeq_output/alb_x_hyp_Testis/na_exons.txt"
+
+# Function to read and process files
+read_and_process_files <- function(significant_path, non_significant_path, na_path) {
+  # Read files
+  significant_df <- read.table(significant_path, header = TRUE, stringsAsFactors = FALSE)
+  non_significant_df <- read.table(non_significant_path, header = TRUE, stringsAsFactors = FALSE)
+  na_df <- read.table(na_path, header = TRUE, stringsAsFactors = FALSE)
+  
+  # Ensure columns are named consistently across data frames
+  colnames(significant_df) <- c("gene", "exons")
+  colnames(non_significant_df) <- c("gene", "exons")
+  colnames(na_df) <- c("gene", "exons")
+  
+  # Extract unique genes from each file
+  significant_genes <- unique(significant_df$gene)
+  non_significant_genes <- unique(non_significant_df$gene)
+  na_padj_genes <- unique(na_df$gene)
+  
+  # Remove genes found in significant from non-significant and na_padj
+  non_significant_unique <- non_significant_df[!non_significant_df$gene %in% significant_genes, ]
+  na_padj_unique <- na_df[!na_df$gene %in% c(significant_genes, non_significant_genes), ]
+  
+  # Create data frames for unique genes and exons
+  significant_output <- significant_df %>%
+    group_by(gene) %>%
+    summarise(exons = paste(unique(exons), collapse = ","))
+  
+  non_significant_output <- non_significant_unique %>%
+    group_by(gene) %>%
+    summarise(exons = paste(unique(exons), collapse = ","))
+  
+  na_padj_output <- na_padj_unique %>%
+    group_by(gene) %>%
+    summarise(exons = paste(unique(exons), collapse = ","))
+  
+  return(list(significant_output, non_significant_output, na_padj_output))
+}
+
+# Process files
+output <- read_and_process_files(significant_exons_path, non_significant_exons_path, na_exons_path)
+
+# Define output file paths
+significant_output_path <- "/home/sfadi/Bureau/DSA_all_species_Testis/DEXSeq_output/alb_x_hyp_Testis/significant_genes.txt"
+non_significant_output_path <- "/home/sfadi/Bureau/DSA_all_species_Testis/DEXSeq_output/alb_x_hyp_Testis/non_significant_genes.txt"
+na_padj_output_path <- "/home/sfadi/Bureau/DSA_all_species_Testis/DEXSeq_output/alb_x_hyp_Testis/na_padj_genes.txt"
+
+# Write output files
+write.table(output[[1]], file = significant_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+write.table(output[[2]], file = non_significant_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+write.table(output[[3]], file = na_padj_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+
+print("Files with genes and their corresponding exons have been created.")
+
+
+--------------------------------------------------------------------------------------------------------------
+--------------------------------------------ALB X F1-----------------------------------------------------------  
+--------------------------------------------------------------------------------------------------------------
+# Load necessary libraries
+library(dplyr)
+
+# Define file paths
+significant_exons_path <- "/home/sfadi/Bureau/DSA_all_species_Testis/DEXSeq_output/alb_x_f1_Testis/significant_exons.txt"
+non_significant_exons_path <- "/home/sfadi/Bureau/DSA_all_species_Testis/DEXSeq_output/alb_x_f1_Testis/non_significant_exons.txt"
+na_exons_path <- "/home/sfadi/Bureau/DSA_all_species_Testis/DEXSeq_output/alb_x_f1_Testis/na_exons.txt"
+
+# Function to read and process files
+read_and_process_files <- function(significant_path, non_significant_path, na_path) {
+  # Read files
+  significant_df <- read.table(significant_path, header = TRUE, stringsAsFactors = FALSE)
+  non_significant_df <- read.table(non_significant_path, header = TRUE, stringsAsFactors = FALSE)
+  na_df <- read.table(na_path, header = TRUE, stringsAsFactors = FALSE)
+  
+  # Ensure columns are named consistently across data frames
+  colnames(significant_df) <- c("gene", "exons")
+  colnames(non_significant_df) <- c("gene", "exons")
+  colnames(na_df) <- c("gene", "exons")
+  
+  # Extract unique genes from each file
+  significant_genes <- unique(significant_df$gene)
+  non_significant_genes <- unique(non_significant_df$gene)
+  na_padj_genes <- unique(na_df$gene)
+  
+  # Remove genes found in significant from non-significant and na_padj
+  non_significant_unique <- non_significant_df[!non_significant_df$gene %in% significant_genes, ]
+  na_padj_unique <- na_df[!na_df$gene %in% c(significant_genes, non_significant_genes), ]
+  
+  # Create data frames for unique genes and exons
+  significant_output <- significant_df %>%
+    group_by(gene) %>%
+    summarise(exons = paste(unique(exons), collapse = ","))
+  
+  non_significant_output <- non_significant_unique %>%
+    group_by(gene) %>%
+    summarise(exons = paste(unique(exons), collapse = ","))
+  
+  na_padj_output <- na_padj_unique %>%
+    group_by(gene) %>%
+    summarise(exons = paste(unique(exons), collapse = ","))
+  
+  return(list(significant_output, non_significant_output, na_padj_output))
+}
+
+# Process files
+output <- read_and_process_files(significant_exons_path, non_significant_exons_path, na_exons_path)
+
+# Define output file paths
+significant_output_path <- "/home/sfadi/Bureau/DSA_all_species_Testis/DEXSeq_output/alb_x_f1_Testis/significant_genes.txt"
+non_significant_output_path <- "/home/sfadi/Bureau/DSA_all_species_Testis/DEXSeq_output/alb_x_f1_Testis/non_significant_genes.txt"
+na_padj_output_path <- "/home/sfadi/Bureau/DSA_all_species_Testis/DEXSeq_output/alb_x_f1_Testis/na_padj_genes.txt"
+
+# Write output files
+write.table(output[[1]], file = significant_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+write.table(output[[2]], file = non_significant_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+write.table(output[[3]], file = na_padj_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+
+print("Files with genes and their corresponding exons have been created.")
+
+--------------------------------------------------------------------------------------------------------------
+--------------------------------------------HYP X F1-----------------------------------------------------------  
+--------------------------------------------------------------------------------------------------------------
+# Load necessary libraries
+library(dplyr)
+
+# Define file paths
+significant_exons_path <- "/home/sfadi/Bureau/DSA_all_species_Testis/DEXSeq_output/hyp_x_f1_Testis/significant_exons.txt"
+non_significant_exons_path <- "/home/sfadi/Bureau/DSA_all_species_Testis/DEXSeq_output/hyp_x_f1_Testis/non_significant_exons.txt"
+na_exons_path <- "/home/sfadi/Bureau/DSA_all_species_Testis/DEXSeq_output/hyp_x_f1_Testis/na_exons.txt"
+
+# Function to read and process files
+read_and_process_files <- function(significant_path, non_significant_path, na_path) {
+  # Read files
+  significant_df <- read.table(significant_path, header = TRUE, stringsAsFactors = FALSE)
+  non_significant_df <- read.table(non_significant_path, header = TRUE, stringsAsFactors = FALSE)
+  na_df <- read.table(na_path, header = TRUE, stringsAsFactors = FALSE)
+  
+  # Ensure columns are named consistently across data frames
+  colnames(significant_df) <- c("gene", "exons")
+  colnames(non_significant_df) <- c("gene", "exons")
+  colnames(na_df) <- c("gene", "exons")
+  
+  # Extract unique genes from each file
+  significant_genes <- unique(significant_df$gene)
+  non_significant_genes <- unique(non_significant_df$gene)
+  na_padj_genes <- unique(na_df$gene)
+  
+  # Remove genes found in significant from non-significant and na_padj
+  non_significant_unique <- non_significant_df[!non_significant_df$gene %in% significant_genes, ]
+  na_padj_unique <- na_df[!na_df$gene %in% c(significant_genes, non_significant_genes), ]
+  
+  # Create data frames for unique genes and exons
+  significant_output <- significant_df %>%
+    group_by(gene) %>%
+    summarise(exons = paste(unique(exons), collapse = ","))
+  
+  non_significant_output <- non_significant_unique %>%
+    group_by(gene) %>%
+    summarise(exons = paste(unique(exons), collapse = ","))
+  
+  na_padj_output <- na_padj_unique %>%
+    group_by(gene) %>%
+    summarise(exons = paste(unique(exons), collapse = ","))
+  
+  return(list(significant_output, non_significant_output, na_padj_output))
+}
+
+# Process files
+output <- read_and_process_files(significant_exons_path, non_significant_exons_path, na_exons_path)
+
+# Define output file paths
+significant_output_path <- "/home/sfadi/Bureau/DSA_all_species_Testis/DEXSeq_output/hyp_x_f1_Testis/significant_genes.txt"
+non_significant_output_path <- "/home/sfadi/Bureau/DSA_all_species_Testis/DEXSeq_output/hyp_x_f1_Testis/non_significant_genes.txt"
+na_padj_output_path <- "/home/sfadi/Bureau/DSA_all_species_Testis/DEXSeq_output/hyp_x_f1_Testis/na_padj_genes.txt"
+
+# Write output files
+write.table(output[[1]], file = significant_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+write.table(output[[2]], file = non_significant_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+write.table(output[[3]], file = na_padj_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+
+print("Files with genes and their corresponding exons have been created.")

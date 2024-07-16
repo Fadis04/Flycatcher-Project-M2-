@@ -1,0 +1,8 @@
+library(GenomicFeatures)  # for the exonicParts() function
+library(txdbmaker)        # for the makeTxDbFromGFF() function
+
+txdb <- makeTxDbFromGFF("/beegfs/data/fslimi/annotation/Ficedula_albicollis.fAlb15.e104.gtf")
+
+flattenedAnnotation <- exonicParts(txdb, linked.to.single.gene.only = TRUE)
+names(flattenedAnnotation) <- sprintf("%s:E%0.3d", flattenedAnnotation$gene_id, flattenedAnnotation$exonic_part)
+saveRDS(flattenedAnnotation, file = "flattenedAnnotation.rds")

@@ -1,0 +1,2 @@
+groupID	featureID
+ENSFALG00000012688	E004

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#SBATCH --job-name=DEXseq_annotation_preparation
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=60G
+#SBATCH --time=01-00:00:00
+#SBATCH --output=DEXSeq_annotation_preparation.out
+#SBATCH --error=DEXSeq_annotation_preparation.err
+
+hostname 
+
+/beegfs/data/soft/R-4.3.1/bin/Rscript  Rsc_Counting_Bins
+

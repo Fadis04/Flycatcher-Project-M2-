@@ -1,0 +1,11 @@
+	STAR --outFileNamePrefix /beegfs/data/fslimi/fic_hyp_bam/SRR9617566_ --quantMode GeneCounts --readFilesCommand "gunzip -c" --outSAMtype BAM SortedByCoordinate --runThreadN 1 --genomeDir /beegfs/data/fslimi/genome_index/ --readFilesIn /beegfs/data/fslimi/RNAseq/fic_hyp/SRR9617566/SRR9617566_1.fastq.gz /beegfs/data/fslimi/RNAseq/fic_hyp/SRR9617566/SRR9617566_2.fastq.gz --outFilterMultimapNmax 1 --outFilterMismatchNmax 3 --twopassMode Basic --outSAMstrandField intronMotif
+	STAR version: 2.7.11b   compiled: 2024-01-25T16:12:02-05:00 :/home/dobin/data/STAR/STARcode/STAR.master/source
+May 06 23:48:23 ..... started STAR run
+May 06 23:48:24 ..... loading genome
+May 07 00:15:18 ..... started 1st pass mapping
+May 07 03:33:35 ..... finished 1st pass mapping
+May 07 03:33:46 ..... inserting junctions into the genome indices
+May 07 03:36:14 ..... started mapping
+May 07 07:52:57 ..... finished mapping
+May 07 07:52:58 ..... started sorting BAM
+May 07 08:08:15 ..... finished successfully

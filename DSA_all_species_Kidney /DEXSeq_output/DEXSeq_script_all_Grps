@@ -1,0 +1,50 @@
+# Load necessary libraries
+library(DEXSeq)
+library(SummarizedExperiment)
+
+# Function to create and save DEXSeqDataSet object
+create_and_save_dxd <- function(group_file_path, output_file_path, se) {
+  # Read the group file
+  group_file <- read.table(group_file_path, header = FALSE, stringsAsFactors = FALSE)
+  colnames(group_file) <- c("Sample", "Species")
+  
+  # Match the samples in the group file with the colnames of the SummarizedExperiment object
+  matching_indices <- match(group_file$Sample, colnames(se))
+  se_sub <- se[, matching_indices]
+  
+  # Assign the condition and libType to the colData of the SummarizedExperiment object
+  colData(se_sub)$condition <- factor(group_file$Species)
+  colData(se_sub)$libType <- factor(rep("single-end", ncol(se_sub)))  # Adjust this if you have different library types
+  
+  # Create the DEXSeqDataSet object
+  dxd <- DEXSeqDataSetFromSE(se_sub, design = ~ sample + exon + condition:exon)
+  
+  # Save the DEXSeqDataSet object
+  saveRDS(dxd, output_file_path)
+  
+  # Confirm saving
+  print(paste("DEXSeqDataSet object saved successfully to", output_file_path))
+}
+
+# Read the summarized experiment object
+se <- readRDS("/home/sfadi/Bureau/summarized_experiment.rds")
+
+# Run the function for the three group files
+create_and_save_dxd(
+  "/home/sfadi/Bureau/DSA_all_species_Kidney/DEXSeq_output/alb_x_f1_Kidney/alb_x_f1_Kidney.txt",
+  "/home/sfadi/Bureau/DSA_all_species_Kidney/DEXSeq_output/alb_x_f1_Kidney/dxd.rds",
+  se
+)
+
+create_and_save_dxd(
+  "/home/sfadi/Bureau/DSA_all_species_Kidney/DEXSeq_output/alb_x_hyp_Kidney/alb_x_hyp_Kidney.txt",
+  "/home/sfadi/Bureau/DSA_all_species_Kidney/DEXSeq_output/alb_x_hyp_Kidney/dxd.rds",
+  se
+)
+
+create_and_save_dxd(
+  "/home/sfadi/Bureau/DSA_all_species_Kidney/DEXSeq_output/hyp_x_f1_Kidney/hyp_x_f1_Kidney.txt",
+  "/home/sfadi/Bureau/DSA_all_species_Kidney/DEXSeq_output/hyp_x_f1_Kidney/dxd.rds",
+  se
+)
+

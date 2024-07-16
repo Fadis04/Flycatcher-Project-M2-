@@ -1,0 +1,120 @@
+Script created and submitted for Sample_HYB05-Brain02_Aligned.sortedByCoord.out.bam.
+Script path: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/slurm_JunctionExtraction_script_Sample_HYB05-Brain02_Aligned.sortedByCoord.out.sh
+Output file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/Sample_HYB05-Brain02_Aligned.sortedByCoord.out.bam_%j_Junc.out
+Error file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/Sample_HYB05-Brain02_Aligned.sortedByCoord.out.bam_%j_Junc.err
+JobID: 971858
+
+Script created and submitted for Sample_HYB05-Heart_Aligned.sortedByCoord.out.bam.
+Script path: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/slurm_JunctionExtraction_script_Sample_HYB05-Heart_Aligned.sortedByCoord.out.sh
+Output file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/Sample_HYB05-Heart_Aligned.sortedByCoord.out.bam_%j_Junc.out
+Error file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/Sample_HYB05-Heart_Aligned.sortedByCoord.out.bam_%j_Junc.err
+JobID: 971859
+
+Script created and submitted for Sample_HYB05-Kidney_Aligned.sortedByCoord.out.bam.
+Script path: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/slurm_JunctionExtraction_script_Sample_HYB05-Kidney_Aligned.sortedByCoord.out.sh
+Output file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/Sample_HYB05-Kidney_Aligned.sortedByCoord.out.bam_%j_Junc.out
+Error file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/Sample_HYB05-Kidney_Aligned.sortedByCoord.out.bam_%j_Junc.err
+JobID: 971860
+
+Script created and submitted for Sample_HYB05-Liver_Aligned.sortedByCoord.out.bam.
+Script path: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/slurm_JunctionExtraction_script_Sample_HYB05-Liver_Aligned.sortedByCoord.out.sh
+Output file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/Sample_HYB05-Liver_Aligned.sortedByCoord.out.bam_%j_Junc.out
+Error file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/Sample_HYB05-Liver_Aligned.sortedByCoord.out.bam_%j_Junc.err
+JobID: 971861
+
+Script created and submitted for Sample_HYB05-Testis-L_Aligned.sortedByCoord.out.bam.
+Script path: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/slurm_JunctionExtraction_script_Sample_HYB05-Testis-L_Aligned.sortedByCoord.out.sh
+Output file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/Sample_HYB05-Testis-L_Aligned.sortedByCoord.out.bam_%j_Junc.out
+Error file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/Sample_HYB05-Testis-L_Aligned.sortedByCoord.out.bam_%j_Junc.err
+JobID: 971862
+
+Script created and submitted for SRR9617551_Aligned.sortedByCoord.out.bam.
+Script path: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/slurm_JunctionExtraction_script_SRR9617551_Aligned.sortedByCoord.out.sh
+Output file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617551_Aligned.sortedByCoord.out.bam_%j_Junc.out
+Error file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617551_Aligned.sortedByCoord.out.bam_%j_Junc.err
+JobID: 971863
+
+Script created and submitted for SRR9617552_Aligned.sortedByCoord.out.bam.
+Script path: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/slurm_JunctionExtraction_script_SRR9617552_Aligned.sortedByCoord.out.sh
+Output file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617552_Aligned.sortedByCoord.out.bam_%j_Junc.out
+Error file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617552_Aligned.sortedByCoord.out.bam_%j_Junc.err
+JobID: 971864
+
+Script created and submitted for SRR9617553_Aligned.sortedByCoord.out.bam.
+Script path: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/slurm_JunctionExtraction_script_SRR9617553_Aligned.sortedByCoord.out.sh
+Output file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617553_Aligned.sortedByCoord.out.bam_%j_Junc.out
+Error file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617553_Aligned.sortedByCoord.out.bam_%j_Junc.err
+JobID: 971865
+
+Script created and submitted for SRR9617554_Aligned.sortedByCoord.out.bam.
+Script path: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/slurm_JunctionExtraction_script_SRR9617554_Aligned.sortedByCoord.out.sh
+Output file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617554_Aligned.sortedByCoord.out.bam_%j_Junc.out
+Error file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617554_Aligned.sortedByCoord.out.bam_%j_Junc.err
+JobID: 971866
+
+Script created and submitted for SRR9617555_Aligned.sortedByCoord.out.bam.
+Script path: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/slurm_JunctionExtraction_script_SRR9617555_Aligned.sortedByCoord.out.sh
+Output file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617555_Aligned.sortedByCoord.out.bam_%j_Junc.out
+Error file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617555_Aligned.sortedByCoord.out.bam_%j_Junc.err
+JobID: 971867
+
+Script created and submitted for SRR9617556_Aligned.sortedByCoord.out.bam.
+Script path: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/slurm_JunctionExtraction_script_SRR9617556_Aligned.sortedByCoord.out.sh
+Output file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617556_Aligned.sortedByCoord.out.bam_%j_Junc.out
+Error file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617556_Aligned.sortedByCoord.out.bam_%j_Junc.err
+JobID: 971868
+
+Script created and submitted for SRR9617557_Aligned.sortedByCoord.out.bam.
+Script path: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/slurm_JunctionExtraction_script_SRR9617557_Aligned.sortedByCoord.out.sh
+Output file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617557_Aligned.sortedByCoord.out.bam_%j_Junc.out
+Error file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617557_Aligned.sortedByCoord.out.bam_%j_Junc.err
+JobID: 971869
+
+Script created and submitted for SRR9617558_Aligned.sortedByCoord.out.bam.
+Script path: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/slurm_JunctionExtraction_script_SRR9617558_Aligned.sortedByCoord.out.sh
+Output file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617558_Aligned.sortedByCoord.out.bam_%j_Junc.out
+Error file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617558_Aligned.sortedByCoord.out.bam_%j_Junc.err
+JobID: 971870
+
+Script created and submitted for SRR9617559_Aligned.sortedByCoord.out.bam.
+Script path: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/slurm_JunctionExtraction_script_SRR9617559_Aligned.sortedByCoord.out.sh
+Output file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617559_Aligned.sortedByCoord.out.bam_%j_Junc.out
+Error file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617559_Aligned.sortedByCoord.out.bam_%j_Junc.err
+JobID: 971871
+
+Script created and submitted for SRR9617560_Aligned.sortedByCoord.out.bam.
+Script path: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/slurm_JunctionExtraction_script_SRR9617560_Aligned.sortedByCoord.out.sh
+Output file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617560_Aligned.sortedByCoord.out.bam_%j_Junc.out
+Error file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617560_Aligned.sortedByCoord.out.bam_%j_Junc.err
+JobID: 971872
+
+Script created and submitted for SRR9617578_Aligned.sortedByCoord.out.bam.
+Script path: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/slurm_JunctionExtraction_script_SRR9617578_Aligned.sortedByCoord.out.sh
+Output file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617578_Aligned.sortedByCoord.out.bam_%j_Junc.out
+Error file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617578_Aligned.sortedByCoord.out.bam_%j_Junc.err
+JobID: 971873
+
+Script created and submitted for SRR9617579_Aligned.sortedByCoord.out.bam.
+Script path: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/slurm_JunctionExtraction_script_SRR9617579_Aligned.sortedByCoord.out.sh
+Output file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617579_Aligned.sortedByCoord.out.bam_%j_Junc.out
+Error file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617579_Aligned.sortedByCoord.out.bam_%j_Junc.err
+JobID: 971874
+
+Script created and submitted for SRR9617580_Aligned.sortedByCoord.out.bam.
+Script path: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/slurm_JunctionExtraction_script_SRR9617580_Aligned.sortedByCoord.out.sh
+Output file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617580_Aligned.sortedByCoord.out.bam_%j_Junc.out
+Error file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617580_Aligned.sortedByCoord.out.bam_%j_Junc.err
+JobID: 971875
+
+Script created and submitted for SRR9617587_Aligned.sortedByCoord.out.bam.
+Script path: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/slurm_JunctionExtraction_script_SRR9617587_Aligned.sortedByCoord.out.sh
+Output file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617587_Aligned.sortedByCoord.out.bam_%j_Junc.out
+Error file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617587_Aligned.sortedByCoord.out.bam_%j_Junc.err
+JobID: 971876
+
+Script created and submitted for SRR9617588_Aligned.sortedByCoord.out.bam.
+Script path: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/slurm_JunctionExtraction_script_SRR9617588_Aligned.sortedByCoord.out.sh
+Output file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617588_Aligned.sortedByCoord.out.bam_%j_Junc.out
+Error file: /beegfs/home/fslimi/scripts/Sc_f1_hyb_junc/junc_out-err/SRR9617588_Aligned.sortedByCoord.out.bam_%j_Junc.err
+JobID: 971877
+

@@ -1,0 +1,22 @@
+#!/bin/bash
+#SBATCH --job-name=Genome_Indexing
+#SBATCH --cpus-per-task=1
+#SBATCH --time=1-00:00:00
+#SBATCH --partition=normal
+#SBATCH --ntasks=1
+#SBATCH --mem=50GB
+#SBATCH --output=/beegfs/home/fslimi/scripts/Genome_Indexing.out
+#SBATCH --error=/beegfs/home/fslimi/scripts/Genome_Indexing.err
+# Building a star index file
+# Define output and reference genome paths
+genome_index_dir="/beegfs/data/fslimi/genome_index/"
+genome_fasta="/beegfs/data/fslimi/assembly/fAlb15_MTmask_mtfZan.fasta"
+gtf_file="/beegfs/data/fslimi/annotation/Ficedula_albicollis.fAlb15.e104.gtf"
+
+# Create genome index with STAR
+STAR --runMode genomeGenerate \
+     --sjdbOverhang 100 \
+     --genomeFastaFiles "$genome_fasta" \
+     --genomeDir "$genome_index_dir" \
+     --sjdbGTFfile "$gtf_file"
+     

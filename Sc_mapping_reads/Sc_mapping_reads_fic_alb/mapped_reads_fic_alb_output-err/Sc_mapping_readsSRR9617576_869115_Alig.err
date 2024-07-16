@@ -1,0 +1,10 @@
+
+gzip: /beegfs/data/fslimi/RNAseq/fic_alb/SRR9617576/SRR9617576_1.fastq.gz: unexpected end of file
+
+EXITING because of FATAL ERROR in reads input: quality string length is not equal to sequence length
+@SRR9617576.1759548
+CAGGAAGGTGATGAGGCAGGTCTCCTTGGGCAGGAAGAGCTTGAGGCGGGAGCCGCTGAACACGTACTCCACCACGGCCTCGGAGCGGCCGGCGCGCTGCAGGAAGGGCAGGAACTGCT
+
+SOLUTION: fix your fastq file
+
+Apr 30 14:18:09 ...... FATAL ERROR, exiting

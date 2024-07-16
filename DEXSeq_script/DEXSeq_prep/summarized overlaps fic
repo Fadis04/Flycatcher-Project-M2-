@@ -1,0 +1,54 @@
+#Summarized Overlaps Ficedula Flycatcher
+
+
+library(Rsamtools)
+library(GenomicAlignments)
+library(SummarizedExperiment)
+
+# Load flattened annotation
+flattenedAnnotation <- readRDS("/beegfs/home/fslimi/scripts/DEXSeq_prep/flattenedAnnotation.rds")
+
+# Set the path to your BAM files
+bam_path <- "/beegfs/data/fslimi/fic_bam/"
+
+# Get a list of all BAM files in the specified path
+bam_files <- list.files(path = bam_path, pattern = "\\.bam$", full.names = TRUE)
+
+# Check if BAM files are found
+if (length(bam_files) == 0) {
+  stop("No BAM files found in the specified path.")
+}
+
+# Create a BamFileList object
+bamFiles <- BamFileList(bam_files)
+
+# Summarize overlaps
+se <- summarizeOverlaps(
+  features = flattenedAnnotation,
+  reads = bamFiles,
+  mode = "Union",
+  singleEnd = FALSE,
+  fragments = TRUE,
+  ignore.strand = TRUE
+)
+
+# Save the summarized experiment object to an RDS file
+saveRDS(se, file = "/beegfs/data/fslimi/read_counts/summarized_experiment.rds")
+
+
+
+#!/bin/bash
+#SBATCH --job-name=/beegfs/data/fslimi/read_counts/summarize_overlaps_fic
+#SBATCH --output=/beegfs/data/fslimi/read_counts/summarize_overlaps_fic.out
+#SBATCH --error=summarize_overlaps_fic.err
+#SBATCH --partition=normal
+#SBATCH --ntasks=1
+#SBATCH --mem=520G
+#SBATCH --time=15:00:00
+
+
+/beegfs/data/soft/R-4.3.1/bin/Rscript  /beegfs/data/fslimi/read_counts/summarize_overlaps_fic.R
+
+
+
+

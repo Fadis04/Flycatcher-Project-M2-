@@ -1,0 +1,22 @@
+# Load DEXSeq library
+library(DEXSeq)
+
+# Read count matrix
+count_matrix <- as.matrix(read.table("/beegfs/data/fslimi/final_read_counts_all_samples.txt", header = TRUE, row.names = 1))
+
+# Read sample information
+sample_info <- read.table("/beegfs/data/fslimi/groups_files.txt", header = FALSE, stringsAsFactors = FALSE)
+colnames(sample_info) <- c("sample", "species", "tissue")
+
+# Create SummarizedExperiment object
+se <- SummarizedExperiment(assays = list(counts = count_matrix))
+
+# Assign sample conditions
+colData(se)$condition <- factor(sample_info$tissue)
+
+# Create DEXSeqDataSet
+dxd <- DEXSeqDataSetFromSE(se, design = ~ sample + exon + condition:exon)
+
+# Save DEXSeq dataset
+saveRDS(dxd, file = "DEXSeq_Dataset.rds")
+

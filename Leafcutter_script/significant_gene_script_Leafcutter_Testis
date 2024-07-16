@@ -1,0 +1,320 @@
+--------------------------------------------------------------------------------------------------------------
+--------------------------------------------ALB X HYP-----------------------------------------------------------  
+--------------------------------------------------------------------------------------------------------------
+# Load necessary libraries
+library(dplyr)
+library(tidyr)
+
+process_files <- function(base_path) {
+  # Define file paths
+  non_significant_path <- file.path(base_path, "non_significant.txt")
+  padj_na_path <- file.path(base_path, "padj_na.txt")
+  significant_path <- file.path(base_path, "significant.txt")
+  
+  # Read data
+  non_significant <- read.table(non_significant_path, header = TRUE, stringsAsFactors = FALSE)
+  padj_na <- read.table(padj_na_path, header = TRUE, stringsAsFactors = FALSE)
+  significant <- read.table(significant_path, header = TRUE, stringsAsFactors = FALSE)
+  
+  # Extract unique gene IDs from significant.txt
+  significant_genes <- unique(significant$genes)
+  
+  # Extract unique gene IDs from non_significant.txt and padj_na.txt
+  non_significant_genes <- unique(non_significant$genes)
+  padj_na_genes <- unique(padj_na$genes)
+  
+  # Remove genes found in significant.txt from non_significant.txt and padj_na.txt
+  non_significant_unique <- non_significant[!non_significant$genes %in% significant_genes, ]
+  padj_na_unique <- padj_na[!padj_na$genes %in% significant_genes, ]
+  
+  # Remove genes found in non_significant.txt from padj_na_unique
+  non_significant_unique_genes <- unique(non_significant_unique$genes)
+  padj_na_unique <- padj_na_unique[!padj_na_unique$genes %in% non_significant_unique_genes, ]
+  
+  # Define output file paths
+  output_non_significant <- file.path(base_path, "non_significant_unique.txt")
+  output_padj_na <- file.path(base_path, "padj_na_unique.txt")
+  
+  # Write unique non_significant and padj_na genes to files
+  write.table(non_significant_unique, file = output_non_significant, quote = FALSE, row.names = FALSE, col.names = TRUE)
+  write.table(padj_na_unique, file = output_padj_na, quote = FALSE, row.names = FALSE, col.names = TRUE)
+  
+  cat("Unique non-significant genes written to:", output_non_significant, "\n")
+  cat("Unique padj_na genes written to:", output_padj_na, "\n")
+  
+  # Paths for further processing
+  padj_na_unique_path <- output_padj_na
+  non_significant_unique_path <- output_non_significant
+  significant_path <- file.path(base_path, "significant.txt")
+  
+  padj_na_output_path <- file.path(base_path, "padj_na_unique_genes_clusters.txt")
+  non_significant_output_path <- file.path(base_path, "non_significant_unique_genes_clusters.txt")
+  significant_output_path <- file.path(base_path, "unique_significant_genes_clusters.txt")
+  
+  # Function to read and process files
+  read_and_process_file <- function(file_path) {
+    df <- read.table(file_path, header = TRUE, stringsAsFactors = FALSE)
+    
+    # Remove rows with NA values in 'genes'
+    df <- df[complete.cases(df$genes), ]
+    
+    # Split genes and create new rows for each gene
+    df <- df %>% 
+      separate_rows(genes, sep = ",")
+    
+    # Group by genes and summarize clusters
+    df <- df %>% 
+      group_by(genes) %>% 
+      summarise(clusters = paste(unique(cluster), collapse = ","))
+    
+    return(df)
+  }
+  
+  # Process each file
+  padj_na_unique_df <- read_and_process_file(padj_na_unique_path)
+  non_significant_unique_df <- read_and_process_file(non_significant_unique_path)
+  unique_significant_genes_df <- read_and_process_file(significant_path)
+  
+  # Write the output files
+  write.table(padj_na_unique_df, file = padj_na_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+  write.table(non_significant_unique_df, file = non_significant_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+  write.table(unique_significant_genes_df, file = significant_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+  
+  print("Files with unique genes and their clusters have been created.")
+  
+  # Identify overlaps and remove them
+  # Remove overlapping genes between significant and non-significant/NA padj
+  significant_genes <- unique_significant_genes_df$genes
+  non_significant_unique_df <- non_significant_unique_df %>% filter(!genes %in% significant_genes)
+  padj_na_unique_df <- padj_na_unique_df %>% filter(!genes %in% significant_genes)
+  
+  # Remove overlapping genes between non-significant and NA padj
+  non_significant_genes <- non_significant_unique_df$genes
+  padj_na_unique_df <- padj_na_unique_df %>% filter(!genes %in% non_significant_genes)
+  
+  # Write the final files
+  write.table(padj_na_unique_df, file = padj_na_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+  write.table(non_significant_unique_df, file = non_significant_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+  write.table(unique_significant_genes_df, file = significant_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+  
+  print("Final files with unique genes and their clusters have been created and overlapping genes have been removed.")
+}
+
+# Example usage
+base_path <- "/home/sfadi/Bureau/DSA_all_species_Testis/Leafcutter_output/alb_x_hyp_Testis"
+process_files(base_path)
+
+--------------------------------------------------------------------------------------------------------------
+--------------------------------------------ALB X F1-----------------------------------------------------------  
+--------------------------------------------------------------------------------------------------------------
+
+# Load necessary libraries
+library(dplyr)
+library(tidyr)
+
+process_files <- function(base_path) {
+  # Define file paths
+  non_significant_path <- file.path(base_path, "non_significant.txt")
+  padj_na_path <- file.path(base_path, "padj_na.txt")
+  significant_path <- file.path(base_path, "significant.txt")
+  
+  # Read data
+  non_significant <- read.table(non_significant_path, header = TRUE, stringsAsFactors = FALSE)
+  padj_na <- read.table(padj_na_path, header = TRUE, stringsAsFactors = FALSE)
+  significant <- read.table(significant_path, header = TRUE, stringsAsFactors = FALSE)
+  
+  # Extract unique gene IDs from significant.txt
+  significant_genes <- unique(significant$genes)
+  
+  # Extract unique gene IDs from non_significant.txt and padj_na.txt
+  non_significant_genes <- unique(non_significant$genes)
+  padj_na_genes <- unique(padj_na$genes)
+  
+  # Remove genes found in significant.txt from non_significant.txt and padj_na.txt
+  non_significant_unique <- non_significant[!non_significant$genes %in% significant_genes, ]
+  padj_na_unique <- padj_na[!padj_na$genes %in% significant_genes, ]
+  
+  # Remove genes found in non_significant.txt from padj_na_unique
+  non_significant_unique_genes <- unique(non_significant_unique$genes)
+  padj_na_unique <- padj_na_unique[!padj_na_unique$genes %in% non_significant_unique_genes, ]
+  
+  # Define output file paths
+  output_non_significant <- file.path(base_path, "non_significant_unique.txt")
+  output_padj_na <- file.path(base_path, "padj_na_unique.txt")
+  
+  # Write unique non_significant and padj_na genes to files
+  write.table(non_significant_unique, file = output_non_significant, quote = FALSE, row.names = FALSE, col.names = TRUE)
+  write.table(padj_na_unique, file = output_padj_na, quote = FALSE, row.names = FALSE, col.names = TRUE)
+  
+  cat("Unique non-significant genes written to:", output_non_significant, "\n")
+  cat("Unique padj_na genes written to:", output_padj_na, "\n")
+  
+  # Paths for further processing
+  padj_na_unique_path <- output_padj_na
+  non_significant_unique_path <- output_non_significant
+  significant_path <- file.path(base_path, "significant.txt")
+  
+  padj_na_output_path <- file.path(base_path, "padj_na_unique_genes_clusters.txt")
+  non_significant_output_path <- file.path(base_path, "non_significant_unique_genes_clusters.txt")
+  significant_output_path <- file.path(base_path, "unique_significant_genes_clusters.txt")
+  
+  # Function to read and process files
+  read_and_process_file <- function(file_path) {
+    df <- read.table(file_path, header = TRUE, stringsAsFactors = FALSE)
+    
+    # Remove rows with NA values in 'genes'
+    df <- df[complete.cases(df$genes), ]
+    
+    # Split genes and create new rows for each gene
+    df <- df %>% 
+      separate_rows(genes, sep = ",")
+    
+    # Group by genes and summarize clusters
+    df <- df %>% 
+      group_by(genes) %>% 
+      summarise(clusters = paste(unique(cluster), collapse = ","))
+    
+    return(df)
+  }
+  
+  # Process each file
+  padj_na_unique_df <- read_and_process_file(padj_na_unique_path)
+  non_significant_unique_df <- read_and_process_file(non_significant_unique_path)
+  unique_significant_genes_df <- read_and_process_file(significant_path)
+  
+  # Write the output files
+  write.table(padj_na_unique_df, file = padj_na_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+  write.table(non_significant_unique_df, file = non_significant_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+  write.table(unique_significant_genes_df, file = significant_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+  
+  print("Files with unique genes and their clusters have been created.")
+  
+  # Identify overlaps and remove them
+  # Remove overlapping genes between significant and non-significant/NA padj
+  significant_genes <- unique_significant_genes_df$genes
+  non_significant_unique_df <- non_significant_unique_df %>% filter(!genes %in% significant_genes)
+  padj_na_unique_df <- padj_na_unique_df %>% filter(!genes %in% significant_genes)
+  
+  # Remove overlapping genes between non-significant and NA padj
+  non_significant_genes <- non_significant_unique_df$genes
+  padj_na_unique_df <- padj_na_unique_df %>% filter(!genes %in% non_significant_genes)
+  
+  # Write the final files
+  write.table(padj_na_unique_df, file = padj_na_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+  write.table(non_significant_unique_df, file = non_significant_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+  write.table(unique_significant_genes_df, file = significant_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+  
+  print("Final files with unique genes and their clusters have been created and overlapping genes have been removed.")
+}
+
+# Example usage
+base_path <- "/home/sfadi/Bureau/DSA_all_species_Testis/Leafcutter_output/alb_x_f1_Testis"
+process_files(base_path)
+--------------------------------------------------------------------------------------------------------------
+--------------------------------------------HYP X F1-----------------------------------------------------------  
+--------------------------------------------------------------------------------------------------------------
+
+# Load necessary libraries
+library(dplyr)
+library(tidyr)
+
+process_files <- function(base_path) {
+  # Define file paths
+  non_significant_path <- file.path(base_path, "non_significant.txt")
+  padj_na_path <- file.path(base_path, "padj_na.txt")
+  significant_path <- file.path(base_path, "significant.txt")
+  
+  # Read data
+  non_significant <- read.table(non_significant_path, header = TRUE, stringsAsFactors = FALSE)
+  padj_na <- read.table(padj_na_path, header = TRUE, stringsAsFactors = FALSE)
+  significant <- read.table(significant_path, header = TRUE, stringsAsFactors = FALSE)
+  
+  # Extract unique gene IDs from significant.txt
+  significant_genes <- unique(significant$genes)
+  
+  # Extract unique gene IDs from non_significant.txt and padj_na.txt
+  non_significant_genes <- unique(non_significant$genes)
+  padj_na_genes <- unique(padj_na$genes)
+  
+  # Remove genes found in significant.txt from non_significant.txt and padj_na.txt
+  non_significant_unique <- non_significant[!non_significant$genes %in% significant_genes, ]
+  padj_na_unique <- padj_na[!padj_na$genes %in% significant_genes, ]
+  
+  # Remove genes found in non_significant.txt from padj_na_unique
+  non_significant_unique_genes <- unique(non_significant_unique$genes)
+  padj_na_unique <- padj_na_unique[!padj_na_unique$genes %in% non_significant_unique_genes, ]
+  
+  # Define output file paths
+  output_non_significant <- file.path(base_path, "non_significant_unique.txt")
+  output_padj_na <- file.path(base_path, "padj_na_unique.txt")
+  
+  # Write unique non_significant and padj_na genes to files
+  write.table(non_significant_unique, file = output_non_significant, quote = FALSE, row.names = FALSE, col.names = TRUE)
+  write.table(padj_na_unique, file = output_padj_na, quote = FALSE, row.names = FALSE, col.names = TRUE)
+  
+  cat("Unique non-significant genes written to:", output_non_significant, "\n")
+  cat("Unique padj_na genes written to:", output_padj_na, "\n")
+  
+  # Paths for further processing
+  padj_na_unique_path <- output_padj_na
+  non_significant_unique_path <- output_non_significant
+  significant_path <- file.path(base_path, "significant.txt")
+  
+  padj_na_output_path <- file.path(base_path, "padj_na_unique_genes_clusters.txt")
+  non_significant_output_path <- file.path(base_path, "non_significant_unique_genes_clusters.txt")
+  significant_output_path <- file.path(base_path, "unique_significant_genes_clusters.txt")
+  
+  # Function to read and process files
+  read_and_process_file <- function(file_path) {
+    df <- read.table(file_path, header = TRUE, stringsAsFactors = FALSE)
+    
+    # Remove rows with NA values in 'genes'
+    df <- df[complete.cases(df$genes), ]
+    
+    # Split genes and create new rows for each gene
+    df <- df %>% 
+      separate_rows(genes, sep = ",")
+    
+    # Group by genes and summarize clusters
+    df <- df %>% 
+      group_by(genes) %>% 
+      summarise(clusters = paste(unique(cluster), collapse = ","))
+    
+    return(df)
+  }
+  
+  # Process each file
+  padj_na_unique_df <- read_and_process_file(padj_na_unique_path)
+  non_significant_unique_df <- read_and_process_file(non_significant_unique_path)
+  unique_significant_genes_df <- read_and_process_file(significant_path)
+  
+  # Write the output files
+  write.table(padj_na_unique_df, file = padj_na_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+  write.table(non_significant_unique_df, file = non_significant_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+  write.table(unique_significant_genes_df, file = significant_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+  
+  print("Files with unique genes and their clusters have been created.")
+  
+  # Identify overlaps and remove them
+  # Remove overlapping genes between significant and non-significant/NA padj
+  significant_genes <- unique_significant_genes_df$genes
+  non_significant_unique_df <- non_significant_unique_df %>% filter(!genes %in% significant_genes)
+  padj_na_unique_df <- padj_na_unique_df %>% filter(!genes %in% significant_genes)
+  
+  # Remove overlapping genes between non-significant and NA padj
+  non_significant_genes <- non_significant_unique_df$genes
+  padj_na_unique_df <- padj_na_unique_df %>% filter(!genes %in% non_significant_genes)
+  
+  # Write the final files
+  write.table(padj_na_unique_df, file = padj_na_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+  write.table(non_significant_unique_df, file = non_significant_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+  write.table(unique_significant_genes_df, file = significant_output_path, row.names = FALSE, quote = FALSE, sep = "\t")
+  
+  print("Final files with unique genes and their clusters have been created and overlapping genes have been removed.")
+}
+
+# Example usage
+base_path <- "/home/sfadi/Bureau/DSA_all_species_Testis/Leafcutter_output/hyp_x_f1_Testis"
+process_files(base_path)
+
+

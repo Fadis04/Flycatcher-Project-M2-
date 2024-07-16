@@ -1,0 +1,102 @@
+Le chargement a nécessité le package : BiocGenerics
+
+Attachement du package : ‘BiocGenerics’
+
+Les objets suivants sont masqués depuis ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+Les objets suivants sont masqués depuis ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+    Position, rank, rbind, Reduce, rownames, sapply, setdiff, sort,
+    table, tapply, union, unique, unsplit, which.max, which.min
+
+Le chargement a nécessité le package : S4Vectors
+Le chargement a nécessité le package : stats4
+
+Attachement du package : ‘S4Vectors’
+
+L'objet suivant est masqué depuis ‘package:utils’:
+
+    findMatches
+
+Les objets suivants sont masqués depuis ‘package:base’:
+
+    expand.grid, I, unname
+
+Le chargement a nécessité le package : IRanges
+Le chargement a nécessité le package : GenomeInfoDb
+Le chargement a nécessité le package : GenomicRanges
+Le chargement a nécessité le package : AnnotationDbi
+Le chargement a nécessité le package : Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+Import genomic features from the file as a GRanges object ... OK
+Prepare the 'metadata' data frame ... OK
+Make the TxDb object ... OK
+Messages d'avis :
+1: Dans .get_cds_IDX(mcols0$type, mcols0$phase) :
+  The "phase" metadata column contains non-NA values for features of type
+  stop_codon. This information was ignored.
+2: Dans makeTxDbFromGRanges(gr, metadata = metadata) :
+  The following transcripts were dropped because their exon ranks could
+  not be inferred (either because the exons are not on the same
+  chromosome/strand or because they are not separated by introns):
+  ENSFALT00000000003, ENSFALT00000000632, ENSFALT00000000775,
+  ENSFALT00000000851, ENSFALT00000001111, ENSFALT00000001169,
+  ENSFALT00000001258, ENSFALT00000001785, ENSFALT00000002131,
+  ENSFALT00000002151, ENSFALT00000002175, ENSFALT00000002391,
+  ENSFALT00000002430, ENSFALT00000002768, ENSFALT00000002988,
+  ENSFALT00000003286, ENSFALT00000003379, ENSFALT00000004111,
+  ENSFALT00000004220, ENSFALT00000004740, ENSFALT00000004823,
+  ENSFALT00000004828, ENSFALT00000005220, ENSFALT00000005486,
+  ENSFALT00000006777, ENSFALT00000007340, ENSFALT00000007490,
+  ENSFALT00000007885, ENSFALT00000008241, ENSFALT00000008771,
+  ENSFALT00000009524, ENSFALT00000009625, ENSFALT00000009805,
+  ENSFALT00000010041, ENSFALT00000010225, ENSFALT00000010736,
+  ENSFALT00000010992, ENSFALT00000011054, ENSFALT000000 […tronqué]
+3: Dans makeTxDbFromGRanges(gr, metadata = metadata) :
+  The following transcripts were dropped because no genomic ranges could
+  be found for them and their ranges could not be inferred from their
+  exons either (because they have them on more than one chromosome):
+  ENSFALT00000000003, ENSFALT00000000632, ENSFALT00000000775,
+  ENSFALT00000000851, ENSFALT00000001111, ENSFALT00000001169,
+  ENSFALT00000001258, ENSFALT00000001785, ENSFALT00000002131,
+  ENSFALT00000002151, ENSFALT00000002175, ENSFALT00000002391,
+  ENSFALT00000002430, ENSFALT00000002768, ENSFALT00000002988,
+  ENSFALT00000003286, ENSFALT00000003379, ENSFALT00000004111,
+  ENSFALT00000004220, ENSFALT00000004740, ENSFALT00000004823,
+  ENSFALT00000004828, ENSFALT00000005220, ENSFALT00000005486,
+  ENSFALT00000006777, ENSFALT00000007340, ENSFALT00000007490,
+  ENSFALT00000007885, ENSFALT00000008241, ENSFALT00000008771,
+  ENSFALT00000009524, ENSFALT00000009625, ENSFALT00000009805,
+  ENSFALT00000010041, ENSFALT00000010225, ENSFALT00000010736,
+  ENSFALT00000010992, ENSFALT00000011054, ENSF […tronqué]
+4: Dans makeTxDbFromGRanges(gr, metadata = metadata) :
+  The following transcripts were dropped because no genomic ranges could
+  be found for them and their ranges could not be inferred from their
+  exons either (because they have them on both strands):
+  ENSFALT00000000003, ENSFALT00000001111, ENSFALT00000001258,
+  ENSFALT00000002131, ENSFALT00000002175, ENSFALT00000002391,
+  ENSFALT00000002430, ENSFALT00000002988, ENSFALT00000003286,
+  ENSFALT00000003379, ENSFALT00000004111, ENSFALT00000005486,
+  ENSFALT00000007490, ENSFALT00000007885, ENSFALT00000008241,
+  ENSFALT00000008771, ENSFALT00000009625, ENSFALT00000009805,
+  ENSFALT00000010041, ENSFALT00000010225, ENSFALT00000010736,
+  ENSFALT00000010992, ENSFALT00000011056, ENSFALT00000011280,
+  ENSFALT00000011485, ENSFALT00000013282, ENSFALT00000013287,
+  ENSFALT00000013937, ENSFALT00000014120, ENSFALT00000014215,
+  ENSFALT00000018165, ENSFALT00000021181, ENSFALT00000022545,
+  ENSFALT00000024845, ENSFALT00000025562, ENSFALT00000025745,
+  ENSFALT00000025961, ENSFALT00000026112, ENSFALT000000264 […tronqué]
+Message d'avis :
+Dans file.remove(destfile) :
+  impossible d'effacer le fichier 'Ficedula_albicollis.fAlb15.e104.gtf', à cause de 'Aucun fichier ou dossier de ce type'

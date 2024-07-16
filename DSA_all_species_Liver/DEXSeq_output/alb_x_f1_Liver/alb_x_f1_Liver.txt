@@ -1,0 +1,8 @@
+SRR9617529_Aligned.sortedByCoord.out.bam Ficedula_albicollis 
+SRR9617541_Aligned.sortedByCoord.out.bam Ficedula_albicollis 
+SRR9617548_Aligned.sortedByCoord.out.bam Ficedula_albicollis 
+SRR9617554_Aligned.sortedByCoord.out.bam F1_hybrid  
+SRR9617559_Aligned.sortedByCoord.out.bam F1_hybrid  
+SRR9617563_Aligned.sortedByCoord.out.bam Ficedula_albicollis 
+SRR9617582_Aligned.sortedByCoord.out.bam Ficedula_albicollis 
+SRR9617588_Aligned.sortedByCoord.out.bam F1_hybrid  

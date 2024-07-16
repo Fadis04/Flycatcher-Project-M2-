@@ -1,0 +1,13 @@
+samtools: error while loading shared libraries: libhts.so.2to3part3: cannot open shared object file: No such file or directory
+
+Program:	regtools
+Version:	1.0.0
+Minimum junction anchor length: 8
+Minimum intron length: 50
+Maximum intron length: 500000
+Alignment: SRR9617541_Aligned.sortedByCoord.out.bam
+Output file: /beegfs/data/fslimi/fic_junc/fic_alb_junc/SRR9617541_Aligned.sortedByCoord.out.bam.junc
+
+Unable to open BAM/SAM index. Make sure alignments are indexed
+
+
